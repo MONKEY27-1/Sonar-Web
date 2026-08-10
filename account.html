@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Account — Sonar</title>
+  <link rel="icon" href="assets/icon.ico" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="container">
+      <a class="brand" href="index.html">
+        <img src="assets/icon.ico" alt="" />
+        Sonar
+      </a>
+      <div class="nav-links">
+        <a href="index.html#features">Features</a>
+        <a href="index.html#download">Download</a>
+        <a href="index.html#tiers">Beta &amp; Pro</a>
+        <a href="https://github.com/MONKEY27-1/sonar" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <div class="nav-right" id="site-nav-auth">
+        <a class="btn btn-ghost" href="account.html">Sign In</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Signed-out: login / register / verify / forgot-password -->
+  <main class="auth-shell" id="auth-shell">
+    <div class="card">
+
+      <div id="alert-box"></div>
+
+      <!-- Login / Register tab switch -->
+      <div id="auth-tabs">
+        <div class="tab-switch">
+          <button id="tab-login" class="active" type="button">Sign In</button>
+          <button id="tab-register" type="button">Create Account</button>
+        </div>
+
+        <!-- Login form -->
+        <form id="login-form">
+          <div class="field">
+            <label for="login-identifier">Username or Email</label>
+            <input id="login-identifier" type="text" autocomplete="username" required />
+          </div>
+          <div class="field">
+            <label for="login-password">Password</label>
+            <input id="login-password" type="password" autocomplete="current-password" required />
+          </div>
+          <button class="btn btn-primary btn-block" type="submit">Sign In</button>
+          <p class="form-footer-link"><a href="#" id="forgot-password-link">Forgot your password?</a></p>
+        </form>
+
+        <!-- Register form -->
+        <form id="register-form" class="hidden">
+          <div class="field">
+            <label for="register-username">Username</label>
+            <input id="register-username" type="text" minlength="3" maxlength="24" required />
+          </div>
+          <div class="field">
+            <label for="register-email">Email</label>
+            <input id="register-email" type="email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="register-password">Password</label>
+            <input id="register-password" type="password" autocomplete="new-password" minlength="8" required />
+            <p class="field-hint">At least 8 characters, mixing letters and numbers.</p>
+          </div>
+          <button class="btn btn-primary btn-block" type="submit">Create Account</button>
+        </form>
+      </div>
+
+      <!-- Email verification (6-digit code) -->
+      <div id="verify-panel" class="hidden">
+        <h2>Check your email</h2>
+        <p class="subtitle">We sent a 6-digit code to <strong id="verify-email-label"></strong>. Enter it below to verify your account.</p>
+        <form id="verify-form">
+          <div class="field">
+            <label for="verify-code">Verification Code</label>
+            <input id="verify-code" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6" required />
+          </div>
+          <button class="btn btn-primary btn-block" type="submit">Verify</button>
+          <p class="form-footer-link"><a href="#" id="resend-code-link">Resend code</a></p>
+        </form>
+      </div>
+
+      <!-- Forgot password: request code -->
+      <div id="forgot-panel" class="hidden">
+        <h2>Reset your password</h2>
+        <p class="subtitle">Enter your account email and we'll send you a reset code.</p>
+        <form id="forgot-form">
+          <div class="field">
+            <label for="forgot-email">Email</label>
+            <input id="forgot-email" type="email" required />
+          </div>
+          <button class="btn btn-primary btn-block" type="submit">Send Reset Code</button>
+          <p class="form-footer-link"><a href="#" id="back-to-login-link">Back to sign in</a></p>
+        </form>
+      </div>
+
+      <!-- Forgot password: enter code + new password -->
+      <div id="reset-panel" class="hidden">
+        <h2>Set a new password</h2>
+        <p class="subtitle">Enter the code sent to <strong id="reset-email-label"></strong> along with your new password.</p>
+        <form id="reset-form">
+          <div class="field">
+            <label for="reset-code">Reset Code</label>
+            <input id="reset-code" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6" required />
+          </div>
+          <div class="field">
+            <label for="reset-new-password">New Password</label>
+            <input id="reset-new-password" type="password" minlength="8" required />
+          </div>
+          <button class="btn btn-primary btn-block" type="submit">Set New Password</button>
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Signed-in dashboard -->
+  <main class="dashboard-shell hidden" id="dashboard-shell">
+    <div class="card">
+      <div class="profile-header">
+        <div class="avatar-circle" id="avatar-initial">?</div>
+        <div>
+          <h1 id="profile-display-name">—</h1>
+          <div class="username" id="profile-username">—</div>
+        </div>
+      </div>
+
+      <div class="badge-row" id="badge-row"></div>
+
+      <div class="detail-row">
+        <span class="label">Email</span>
+        <span id="profile-email">—</span>
+      </div>
+      <div class="detail-row">
+        <span class="label">Member since</span>
+        <span id="profile-created">—</span>
+      </div>
+
+      <div class="beta-cta hidden" id="beta-cta">
+        <h3>Join the Beta</h3>
+        <p>Beta testers get unlimited sounds, unlimited folders, custom themes, and early access to new features — free, forever.</p>
+        <button class="btn btn-primary" id="join-beta-btn">Join the Beta</button>
+      </div>
+
+      <div class="dashboard-actions">
+        <a class="btn btn-secondary btn-block" data-download-button href="#"><span data-download-label>Download for Windows</span></a>
+        <button class="btn btn-ghost" id="sign-out-btn">Sign Out</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/session.js"></script>
+  <script src="js/download.js"></script>
+  <script src="js/account.js"></script>
+</body>
+</html>
