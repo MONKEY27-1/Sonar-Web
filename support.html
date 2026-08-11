@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Support — Sonar</title>
+  <link rel="icon" href="assets/icon.ico" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="container">
+      <a class="brand" href="index.html">
+        <img src="assets/icon.ico" alt="" />
+        Sonar
+      </a>
+      <div class="nav-links">
+        <a href="index.html#features">Features</a>
+        <a href="index.html#download">Download</a>
+        <a href="index.html#tiers">Beta &amp; Pro</a>
+        <a href="support.html">Support</a>
+        <a href="https://github.com/MONKEY27-1/sonar" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <div class="nav-right" id="site-nav-auth">
+        <a class="btn btn-ghost" href="account.html">Sign In</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Signed-out: prompt to sign in -->
+  <main class="auth-shell hidden" id="signed-out-shell">
+    <div class="card">
+      <h1>Sign in for Support</h1>
+      <p class="subtitle">You need a Sonar account to submit or view support requests.</p>
+      <a class="btn btn-primary btn-block" href="account.html">Sign In</a>
+    </div>
+  </main>
+
+  <!-- Signed-in: ticket list + thread -->
+  <main class="support-shell hidden" id="support-shell">
+    <div class="support-layout">
+      <aside class="support-sidebar">
+        <button class="btn btn-primary btn-block" id="new-ticket-btn" type="button">+ New Request</button>
+        <div class="ticket-list" id="ticket-list"></div>
+      </aside>
+
+      <section class="support-main">
+        <div class="support-empty" id="support-empty">Select a request, or start a new one.</div>
+
+        <form class="support-compose hidden" id="new-ticket-form">
+          <h2>New Support Request</h2>
+          <div class="field">
+            <label for="new-ticket-subject">Subject</label>
+            <input id="new-ticket-subject" type="text" maxlength="120" required />
+          </div>
+          <div class="field">
+            <label for="new-ticket-message">Message</label>
+            <textarea id="new-ticket-message" rows="7" required></textarea>
+          </div>
+          <div id="new-ticket-alert"></div>
+          <button class="btn btn-primary" type="submit">Send</button>
+        </form>
+
+        <div class="support-thread hidden" id="support-thread">
+          <h2 id="thread-subject">—</h2>
+          <div class="thread-messages" id="thread-messages"></div>
+
+          <div class="thread-resolved-note hidden" id="thread-resolved-note">
+            This request has been resolved. <a href="#" id="thread-start-new-link">Start a new request</a> if you need more help.
+          </div>
+
+          <form class="thread-reply" id="thread-reply-form">
+            <textarea id="thread-reply-text" rows="2" placeholder="Type a message…" required></textarea>
+            <button class="btn btn-primary" type="submit">Send</button>
+          </form>
+          <div id="thread-reply-alert"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/session.js"></script>
+  <script src="js/support.js"></script>
+</body>
+</html>

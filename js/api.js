@@ -272,5 +272,70 @@ const SonarApi = (() => {
         return { success: false, message: "Couldn't join the beta right now. Please try again." };
       }
     },
+
+    // -- Support tickets (support_tickets / support_ticket_messages, schema section 17) -----
+    // Mirrors src/Soundboard/Authentication/SupabaseSupportTicketService.cs so the website's
+    // Support page and the desktop app's Support window talk to the same threads. Reads are
+    // scoped to the caller's own tickets by RLS; writes go through security definer RPCs so
+    // sender identity can't be spoofed from client-side code.
+
+    async listMyTickets(session) {
+      try {
+        const rows = await request(
+          `/rest/v1/support_tickets?select=id,subject,status,created_at&user_id=eq.${encodeURIComponent(
+            session.userId
+          )}&order=created_at.desc`,
+          { accessToken: session.accessToken }
+        );
+        return Array.isArray(rows) ? rows : [];
+      } catch {
+        return [];
+      }
+    },
+
+    async getTicketMessages(session, ticketId) {
+      try {
+        const rows = await request(
+          `/rest/v1/support_ticket_messages?select=id,sender_username,is_admin,body,created_at&ticket_id=eq.${encodeURIComponent(
+            ticketId
+          )}&order=created_at.asc`,
+          { accessToken: session.accessToken }
+        );
+        return Array.isArray(rows) ? rows : [];
+      } catch {
+        return [];
+      }
+    },
+
+    async createTicket(session, subject, body) {
+      try {
+        const ticketId = await request("/rest/v1/rpc/create_support_ticket", {
+          method: "POST",
+          body: { subject_text: subject, body_text: body },
+          accessToken: session.accessToken,
+        });
+        return typeof ticketId === "string" && ticketId
+          ? { success: true, ticketId }
+          : { success: false, message: "Couldn't submit your request." };
+      } catch (err) {
+        return { success: false, message: serverMessage(err) || "Couldn't submit your request." };
+      }
+    },
+
+    async sendTicketMessage(session, ticketId, body) {
+      try {
+        await request("/rest/v1/rpc/send_ticket_message", {
+          method: "POST",
+          body: { target_ticket_id: ticketId, body_text: body },
+          accessToken: session.accessToken,
+        });
+        return { success: true };
+      } catch (err) {
+        // Surfaces the RPC's own message (e.g. "This request is resolved...") rather than a
+        // generic one — send_ticket_message() rejects with a specific reason, not just a
+        // blanket auth failure.
+        return { success: false, message: serverMessage(err) || "Couldn't send your message." };
+      }
+    },
   };
 })();
