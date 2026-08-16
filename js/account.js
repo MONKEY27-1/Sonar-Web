@@ -266,6 +266,13 @@
 
     const betaCta = document.getElementById("beta-cta");
     betaCta.classList.toggle("hidden", profile.isBetaTester);
+
+    // Hidden whenever Pro is unlocked by ANY path (a real purchase, Beta Tester, or an
+    // admin/developer grant) — not just after a real purchase, so a Beta Tester (who already
+    // has full Pro access for free) doesn't see an active "buy Pro" button.
+    const proUnlocked =
+      profile.isBetaTester || ["Pro", "Developer", "Administrator"].includes(profile.license);
+    document.getElementById("pro-cta").classList.toggle("hidden", proUnlocked);
   }
 
   document.getElementById("join-beta-btn").addEventListener("click", async () => {
