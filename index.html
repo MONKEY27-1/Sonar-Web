@@ -129,8 +129,8 @@
           <h3>Free</h3>
           <p class="tier-price">$0</p>
           <ul class="tier-list">
-            <li>Full soundboard &amp; voice changer</li>
-            <li>Up to 100 sounds, 3 folders</li>
+            <li>Full soundboard</li>
+            <li>Up to 15 sounds, 1 folder</li>
             <li>Global hotkeys &amp; mic routing</li>
             <li>Community plugins &amp; packs</li>
           </ul>
@@ -143,20 +143,22 @@
           <ul class="tier-list">
             <li>Everything in Free</li>
             <li>Unlimited sounds &amp; folders</li>
-            <li>Custom themes</li>
-            <li>Early access to new features</li>
+            <li>Voice Changer &amp; custom themes</li>
+            <li>Cloud Sync, early access to new features</li>
           </ul>
           <a class="btn btn-primary btn-block" href="account.html#register">Join the Beta</a>
         </div>
         <div class="tier-card">
           <h3>Pro</h3>
-          <p class="tier-price">Coming soon</p>
+          <!-- Keep in sync with the Price created in the Stripe dashboard
+               (see netlify/functions/create-checkout-session.js for STRIPE_PRICE_ID). -->
+          <p class="tier-price">$9.99 <span>one-time</span></p>
           <ul class="tier-list">
             <li>Everything in Beta Tester</li>
             <li>Priority support</li>
             <li>Cloud sync for settings &amp; library</li>
           </ul>
-          <a class="btn btn-secondary btn-block" href="account.html#register">Get Notified</a>
+          <button class="btn btn-secondary btn-block" type="button" data-checkout-btn>Upgrade to Pro</button>
         </div>
       </div>
     </div>
@@ -177,5 +179,6 @@
   <script src="js/api.js"></script>
   <script src="js/session.js"></script>
   <script src="js/download.js"></script>
+  <script src="js/checkout.js"></script>
 </body>
 </html>
