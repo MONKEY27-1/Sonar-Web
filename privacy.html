@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy Policy — Sonar</title>
+  <meta name="description" content="What Sonar collects, why, and how to get your data removed." />
+  <link rel="icon" href="assets/icon.ico" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sonar" />
+  <meta property="og:url" content="https://sonars.netlify.app/privacy.html" />
+  <meta property="og:title" content="Privacy Policy — Sonar" />
+  <meta property="og:description" content="What Sonar collects, why, and how to get your data removed." />
+  <meta property="og:image" content="https://sonars.netlify.app/assets/icon.ico" />
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="container">
+      <a class="brand" href="index.html">
+        <img src="assets/icon.ico" alt="" />
+        Sonar
+      </a>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html#features">Features</a>
+        <a href="index.html#screenshots">Screenshots</a>
+        <a href="index.html#download">Download</a>
+        <a href="index.html#tiers">Beta &amp; Pro</a>
+        <a href="support.html">Support</a>
+        <a href="https://github.com/MONKEY27-1/sonar" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <div class="nav-right" id="site-nav-auth">
+        <a class="btn btn-ghost" href="account.html">Sign In</a>
+      </div>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">&#9776;</button>
+    </div>
+  </nav>
+
+  <main class="legal-shell">
+    <h1>Privacy Policy</h1>
+    <p class="legal-updated">Last updated 2026.</p>
+
+    <p>Sonar (the desktop app) works fully offline without an account. This page covers what's collected only if you choose to create a Sonar account, either in the app or on this website.</p>
+
+    <h2>What we collect</h2>
+    <ul>
+      <li><strong>Account info:</strong> the username, email address, and password you provide when registering. Passwords are handled entirely by Supabase Auth (our authentication provider) — we never see or store your password in plain text.</li>
+      <li><strong>License/tier status:</strong> whether your account is Free, Beta Tester, or Pro, so the app and site can unlock the right features.</li>
+      <li><strong>Support messages:</strong> anything you send us through the in-app or website support chat.</li>
+      <li><strong>Payment (Pro upgrade only):</strong> handled entirely by Stripe's own hosted checkout. We never receive or store your card number — Stripe sends us only a confirmation that a payment succeeded.</li>
+    </ul>
+
+    <h2>What we don't collect</h2>
+    <p>Sonar doesn't track your sound library contents, hotkeys, or usage analytics. The desktop app's only outbound network calls are checking GitHub Releases for updates and, if you're signed in, syncing your account/license status.</p>
+
+    <h2>How it's stored</h2>
+    <p>Account data lives in our Supabase project (hosted on Supabase's infrastructure). Your desktop app session is kept in your browser's local storage on this site, and in a local settings file on your PC for the app itself.</p>
+
+    <h2>Your data, your call</h2>
+    <p>You can delete your account and its data at any time from Settings → Account in the app, or by contacting <a href="support.html">Support</a>.</p>
+
+    <h2>Questions</h2>
+    <p>Reach us through <a href="support.html">Support</a> or open an issue on <a href="https://github.com/MONKEY27-1/sonar" target="_blank" rel="noopener">GitHub</a>.</p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>&copy; 2026 Sonar. MIT Licensed.</span>
+      <span>
+        <a href="https://github.com/MONKEY27-1/sonar" target="_blank" rel="noopener">GitHub</a>
+        &nbsp;·&nbsp;
+        <a href="privacy.html">Privacy</a>
+        &nbsp;·&nbsp;
+        <a href="terms.html">Terms</a>
+      </span>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/session.js"></script>
+</body>
+</html>

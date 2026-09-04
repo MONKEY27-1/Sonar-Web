@@ -62,6 +62,27 @@ document.addEventListener("DOMContentLoaded", async () => {
   )}</a>`;
 });
 
+// Mobile hamburger menu — same #nav-toggle/#nav-links pair on every page's shared nav markup.
+document.addEventListener("DOMContentLoaded", () => {
+  const toggle = document.getElementById("nav-toggle");
+  const links = document.getElementById("nav-links");
+  if (!toggle || !links) return;
+
+  toggle.addEventListener("click", () => {
+    const open = links.classList.toggle("open");
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+
+  // Closing on link click means the dropdown doesn't stay open behind whatever page/section
+  // navigating to it just brought into view.
+  links.addEventListener("click", (event) => {
+    if (event.target.tagName === "A") {
+      links.classList.remove("open");
+      toggle.setAttribute("aria-expanded", "false");
+    }
+  });
+});
+
 function escapeHtml(text) {
   const div = document.createElement("div");
   div.textContent = text;

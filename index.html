@@ -7,6 +7,17 @@
   <meta name="description" content="Sonar is a fast Windows soundboard and voice changer for gamers and streamers. Free download, plus Beta and Pro accounts." />
   <link rel="icon" href="assets/icon.ico" />
   <link rel="stylesheet" href="css/style.css" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sonar" />
+  <meta property="og:url" content="https://sonars.netlify.app/" />
+  <meta property="og:title" content="Sonar — Soundboard &amp; Voice Changer for Windows" />
+  <meta property="og:description" content="Sonar is a fast Windows soundboard and voice changer for gamers and streamers. Free download, plus Beta and Pro accounts." />
+  <meta property="og:image" content="https://sonars.netlify.app/assets/icon.ico" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Sonar — Soundboard &amp; Voice Changer for Windows" />
+  <meta name="twitter:description" content="Sonar is a fast Windows soundboard and voice changer for gamers and streamers. Free download, plus Beta and Pro accounts." />
+  <meta name="twitter:image" content="https://sonars.netlify.app/assets/icon.ico" />
 </head>
 <body>
 
@@ -16,8 +27,9 @@
         <img src="assets/icon.ico" alt="" />
         Sonar
       </a>
-      <div class="nav-links">
+      <div class="nav-links" id="nav-links">
         <a href="#features">Features</a>
+        <a href="#screenshots">Screenshots</a>
         <a href="#download">Download</a>
         <a href="#tiers">Beta &amp; Pro</a>
         <a href="support.html">Support</a>
@@ -26,6 +38,7 @@
       <div class="nav-right" id="site-nav-auth">
         <a class="btn btn-ghost" href="account.html">Sign In</a>
       </div>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">&#9776;</button>
     </div>
   </nav>
 
@@ -47,6 +60,28 @@
     </div>
   </header>
 
+  <section id="screenshots">
+    <div class="container">
+      <div class="section-header">
+        <h2>See it in action</h2>
+        <p>A quick look at the library and the Voice Changer.</p>
+      </div>
+      <div class="screenshots-grid">
+        <!-- Replace each .screenshot-placeholder div with an <img class="screenshot-frame"... />
+             (or keep the .screenshot-frame wrapper and swap the placeholder div for a real <img>
+             inside it) once real captures exist. -->
+        <div class="screenshot-frame">
+          <div class="screenshot-placeholder">Screenshot coming soon — sound library</div>
+          <div class="screenshot-caption">The main library, with folders, tags, and instant search.</div>
+        </div>
+        <div class="screenshot-frame">
+          <div class="screenshot-placeholder">Screenshot coming soon — Voice Changer</div>
+          <div class="screenshot-caption">Live pitch, formant, and tempo control in the Voice Changer.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="features">
     <div class="container">
       <div class="section-header">
@@ -66,8 +101,8 @@
         </div>
         <div class="feature-card">
           <div class="feature-icon">&#127908;</div>
-          <h3>Mic routing</h3>
-          <p>Send sounds to your headphones, your microphone via a virtual audio cable, or both at once — perfect for voice chat pranks and streaming.</p>
+          <h3>Multi-device audio routing</h3>
+          <p>Send sounds to several headphone outputs and capture from several microphones at once, with automatic mic passthrough and real loudness normalization — not just a single virtual cable.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">&#8963;</div>
@@ -77,7 +112,7 @@
         <div class="feature-card">
           <div class="feature-icon">&#127917;</div>
           <h3>Voice changer</h3>
-          <p>Live pitch shift, robot, echo, and distortion effects, so your mic doesn't have to sound like just you.</p>
+          <p>Live pitch, formant, and true tempo shifting (duration stays independent of pitch), plus robot, echo, distortion, overdrive, delay, reverb, and proximity effects — with saved voice presets.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">&#128230;</div>
@@ -98,6 +133,16 @@
           <div class="feature-icon">&#8635;</div>
           <h3>Auto-updates</h3>
           <p>Sonar checks GitHub Releases on launch and offers a one-click install for new versions — no manual re-downloads.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">&#128640;</div>
+          <h3>Performance Mode</h3>
+          <p>Reduces visual effects, virtualizes the sound library, and lowers background polling — keeps large libraries fast on lower-end hardware.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">&#128295;</div>
+          <h3>Advanced Settings</h3>
+          <p>Real RMS-based loudness normalization across your whole library, plus deeper diagnostics — no more guessing why one sound plays louder than the rest.</p>
         </div>
       </div>
     </div>
@@ -171,6 +216,10 @@
         <a href="https://github.com/MONKEY27-1/sonar" target="_blank" rel="noopener">GitHub</a>
         &nbsp;·&nbsp;
         <a href="account.html">Account</a>
+        &nbsp;·&nbsp;
+        <a href="privacy.html">Privacy</a>
+        &nbsp;·&nbsp;
+        <a href="terms.html">Terms</a>
       </span>
     </div>
   </footer>
